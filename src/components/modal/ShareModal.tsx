@@ -7,7 +7,16 @@ import { ModalDataProp } from './types/modal.type';
 import Image from 'next/image';
 
 interface ShareModalProp {
-  data: ModalDataProp;
+  //depth를 낮추려고 했으나 prop으로 내려주는 과정에서
+  //data로 묶어서 보내는게 보기 편할 것 같아 변경하지 않았습니다.
+  data: {
+    name: string;
+    id: number;
+    url?: string;
+    link?: {
+      count: number;
+    };
+  };
 }
 
 function ShareModal({ data }: ShareModalProp) {
@@ -23,7 +32,7 @@ function ShareModal({ data }: ShareModalProp) {
   };
   useEffect(() => {
     Kakao.cleanup();
-    Kakao.init('a8781cd2ea84e6967254408b21b95759');
+    Kakao.init(process.env.NEXT_PUBLIC_LINKBRARY_KAKAO_MODAL_KEY);
   }, []);
 
   const shareKakao = () => {

@@ -21,10 +21,21 @@ interface LinkCard {
   openModal: (type: string, data?: FolderList[] | DataProp) => void;
 }
 
+function ensureAbsoluteUrl(url: string) {
+  if (url.startsWith('//')) {
+    return 'https:' + url;
+  }
+  return url;
+}
+
 function LinkCard({ data, openModal }: LinkCard) {
   const [popOver, setPopOver] = useState(false);
   const [imgSrc, setImgSrc] = useState(
-    data?.imageSource || data?.image_source || noImg,
+    data?.imageSource
+      ? ensureAbsoluteUrl(data.imageSource)
+      : data?.image_source
+      ? ensureAbsoluteUrl(data.image_source)
+      : noImg,
   );
 
   const handleKebabClick = (e: MouseEvent<HTMLDivElement>) => {

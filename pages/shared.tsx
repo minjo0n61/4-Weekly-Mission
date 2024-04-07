@@ -51,7 +51,7 @@ export default function Shared() {
 
   return (
     <main className={style.main}>
-      <FolderInfo folderInfo={folderInfo} />
+      <FolderInfo name={folderInfo.name} owner={folderInfo.owner} />
       <div className={style.mainContent}>
         <SearchBar />
         <LinkList linkList={linkList} />

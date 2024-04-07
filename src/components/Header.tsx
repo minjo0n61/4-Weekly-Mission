@@ -19,13 +19,14 @@ function Header() {
     email: '',
     image_source: '',
   });
-  const asyncGetUser = useAsync(getUser);
+  const userId = '2';
+  const asyncGetUser = useAsync(() => getUser(userId));
   const router = useRouter();
 
   const apiGetUser = useCallback(async () => {
     const { data } = await asyncGetUser();
     if (!data) return;
-    const { name, email, image_source } = data[0];
+    const [{ name, email, image_source }] = data;
     setUserInfo({ name, email, image_source });
   }, [asyncGetUser]);
 

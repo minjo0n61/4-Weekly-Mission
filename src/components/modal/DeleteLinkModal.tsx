@@ -1,8 +1,14 @@
 import style from '@/styles/modal/DeleteFolderModal.module.css';
-import { ModalDataProp } from './types/modal.type';
 
 interface DeleteModalProp {
-  data: ModalDataProp;
+  data: {
+    name: string;
+    id: number;
+    url?: string;
+    link?: {
+      count: number;
+    };
+  };
 }
 
 function DeleteModal({ data }: DeleteModalProp) {

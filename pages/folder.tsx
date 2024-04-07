@@ -20,7 +20,8 @@ function Folder() {
   const [linkList, setLinkList] = useState<LinkFolder[]>([]);
   const [folderId, setFolderId] = useState('');
   const [folderList, setFolderList] = useState<FolderDataType[]>([]);
-  const asyncGetFolderList = useAsync<any>(getFolderList);
+  const userId = '4';
+  const asyncGetFolderList = useAsync<any>(() => getFolderList(userId));
   const asyncGetLinkList = useAsync<any>(getLinkList);
 
   const apiGetFolderList = useCallback(async () => {
@@ -32,7 +33,7 @@ function Folder() {
   }, [asyncGetFolderList]);
 
   const apiGetLinkList = useCallback(async () => {
-    const result = await asyncGetLinkList(folderId);
+    const result = await asyncGetLinkList({ userId, folderId });
     if (!result) return;
 
     const { data } = result;

@@ -96,7 +96,7 @@ function FolderList({ folderList, onClick }: FolderListProp) {
             <span className={style.folderName}>{activeFolderInfo.name}</span>
           </div>
           <div className={style.flexBox}>
-            {activeFolderInfo.id !== '' && (
+            {activeFolderInfo.id && (
               <>
                 <Image
                   width={50}

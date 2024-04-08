@@ -16,6 +16,9 @@
   --Gray3: #ccd5e3;
   --Gray4: #e7effb;
   --Gray5: #f0f6ff;
+  --Gray6: #ccd5e3;
+  --Gray7: #f5f5f5;
+  --Gray8: #373740;
 }
 input:focus {
   outline: none;
